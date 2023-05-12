@@ -1,3 +1,5 @@
+import { Login } from "./Login";
+import { LogoutLink } from "./Logout";
 import { Signup } from "./Signup";
 import { SongsIndex } from "./SongsIndex";
 import { SongsNew } from "./SongsNew";
@@ -27,9 +29,11 @@ export function Content() {
 
   return (
     <div>
+      <Login />
       <Signup />
       <SongsIndex songs={songs} />
       <SongsNew onCreateSong={handleNewSong} />
+      <LogoutLink />
     </div>
   );
 }
