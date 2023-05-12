@@ -5,6 +5,10 @@ export function SongsShow(props) {
     const params = new FormData(event.target);
     props.onUpdateSong(props.song.id, params, () => event.target.reset());
   };
+
+  const handleClick = () => {
+    props.onDestroySong(props.song);
+  };
   return (
     <div>
       <h1>Update Photo</h1>
@@ -39,7 +43,8 @@ export function SongsShow(props) {
         <div>
           Sheet Music: <input defaultValue={props.song.sheet_music_url} name="sheet_music_url" type="text" />
         </div>
-        <button type="submit">Create Song</button>
+        <button type="submit">Update Song</button>
+        <button onClick={handleClick}>Destroy Song</button>
       </form>
     </div>
   );

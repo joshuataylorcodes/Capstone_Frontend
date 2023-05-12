@@ -57,6 +57,14 @@ export function Content() {
     setIsSongsShowVisible(false);
   };
 
+  const handleDestroySong = (song) => {
+    console.log("handleDestroySong", song);
+    axios.delete(`http://localhost:3000/songs/${song.id}.json`).then((response) => {
+      setSongs(songs.filter((s) => s.id !== song.id));
+      handleClose();
+    });
+  };
+
   useEffect(handleIndexSong, []);
 
   return (
@@ -67,7 +75,7 @@ export function Content() {
       <SongsNew onCreateSong={handleNewSong} />
       <Modal show={isSongsShowVisible} onClose={handleClose}>
         <h1>test</h1>
-        <SongsShow song={currentSong} onUpdateSong={handleUpdateSong} />
+        <SongsShow song={currentSong} onUpdateSong={handleUpdateSong} onDestroySong={handleDestroySong} />
       </Modal>
       <LogoutLink />
     </div>
