@@ -14,6 +14,9 @@ export function SongsIndex(props) {
           <p>Dynamics: {song.dynamics}</p>
           <p>Song Length: {song.song_length}</p>
           <a href={song.video_url}>Video Link</a> | <a href={song.sheet_music_url}>Sheet Music</a>
+          <div>
+            <button onClick={() => props.onShowSong(song)}>More info</button>
+          </div>
         </div>
       ))}
     </div>
